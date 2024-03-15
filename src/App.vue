@@ -23,6 +23,7 @@ for (let i = 0; i < 200; i++) {
       Launch demo modal
     </button>
 
+    <MyCombobox :options="options" />
     <!-- Modal -->
     <div
       class="modal fade"
