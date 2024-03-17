@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, shallowRef } from 'vue'
 import {
   Combobox,
   ComboboxInput,
@@ -55,6 +55,10 @@ const openBtnRef = ref()
 const onClickInput = () => {
   openBtnRef.value && openBtnRef.value.el.click()
 }
+const inputRef = shallowRef()
+const onOptionsMouseDown = () => {
+  inputRef.value && inputRef.value.$el.blur()
+}
 </script>
 
 <template>
@@ -69,6 +73,7 @@ const onClickInput = () => {
         <ComboboxInput
           class="form-control text-truncate"
           :placeholder="placeholder"
+          ref="inputRef"
           :display-value="
             (option) => {
               return option ? option.label : ''
@@ -88,7 +93,7 @@ const onClickInput = () => {
         leave-to="opacity-0"
         @after-leave="query = ''"
       >
-        <div class="options-box">
+        <div class="options-box" @mousedown="onOptionsMouseDown">
           <ComboboxOptions class="combobox-options">
             <div v-if="filteredOptions.length === 0 && query !== ''" class="not-found-text">
               Nothing found.
