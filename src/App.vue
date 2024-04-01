@@ -12,7 +12,7 @@ for (let i = 0; i < 200; i++) {
 </script>
 
 <template>
-  <main>
+  <main tabindex="-1">
     <!-- Button trigger modal -->
     <button
       type="button"

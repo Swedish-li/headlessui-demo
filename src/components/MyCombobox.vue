@@ -69,6 +69,7 @@ const onClickInput = () => {
         <ComboboxInput
           class="form-control text-truncate"
           :placeholder="placeholder"
+          autocomplete="off"
           :display-value="
             (option) => {
               return option ? option.label : ''
